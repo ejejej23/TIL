@@ -16,6 +16,10 @@
 - Data Access Object 패턴 : 일영 DAO 라고 알려져 있다 에 접근을 전담하는 클래스를 추상화하고 캡슐화한다. 
 - Service Activator 패턴 : 비동기적 호출을 처리하기 위한패턴이다
 
-## J2EE패턴중 성능에 직접적인 패턴은 Service Locator 패턴.
-## 어플리케이션 개발시 반드시 사용해야 하는 Transfer Object 패턴도 중요
+### J2EE패턴중 성능에 직접적인 패턴은 Service Locator 패턴.
+### 어플리케이션 개발시 반드시 사용해야 하는 Transfer Object 패턴도 중요
 
+## Serialize는 왜 구현(implements) 했을까?
+: 이 인터페이스를 구현하면 객체를 직렬화할 수 있다. 즉, 서버사이의 데이터 전송이 가능해진다
+
+그러므로 원격지 서버에 데이터를 전송하거나 파일로 객체를 저장할 경우에는 이 인터페이스를 구현해야한다.
