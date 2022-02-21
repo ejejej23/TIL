@@ -65,3 +65,37 @@ C: 컨트롤러
 ### 스프링부트
 : 스프링부트 애플리케이션이 먼저 동작하고 그 안에 톰캣(내장서버)이 포함됨. 톰캣 안에 서블릿을 코드로 등록
 - 스프링 어플리케이션 안에 톰캣이 들어가있는 구조
+
+
+-----
+### @EnableWebMvc
+: 애노테이션 기반 스프링 MVC를 사용할 때 편리한 웹 MVC 기본 설정
+```
+@Configuration
+@EnableWebMvc
+public class WebConfig {
+}
+```
+
+- 장점중의 하나로 DelegatingWebMvcConfiguration를 import해 읽어온다는 점이 있음
+- delegation 구조 : 위임해서 읽어오는 구조
+- 즉 처음부터 핸들러 어댑터를 등록해야하는 게 아니라 클래스가 연결해주는 핸들러 어댑터에 조금만 수정해서 사용가능
+- 핸들러 어댑터에 인터셉터를 추가하는 방식 등이 편해짐
+
+- 가져온 설정을 확장해 사용할 수 있는 기능을 제공함 : 인터페이스 WebMvcConfigurer
+-> 뷰 리졸버를 직접 등록하지 않아도 연결되어있는 것을 사용해 수정/사용가능
+
+### WebMvcConfigurer 인터페이스
+: @EnableWebMvc가 제공하는 빈을 커스터마이징할 수 있는 기능을 제공하는 인터페이스
+
+```
+@Configuration
+@EnableWebMvc
+public class WebConfig implements WebMvcConfigurer {
+@Override
+   public void configureViewResolvers(ViewResolverRegistry registry) {
+      registry.jsp("/WEB-INF/", ".jsp");
+   }
+}
+```
+
