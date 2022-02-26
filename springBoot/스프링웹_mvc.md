@@ -99,3 +99,8 @@ public class WebConfig implements WebMvcConfigurer {
 }
 ```
 
+### Fommater
+: Printer와 Parser를 합친기능
+
+- Printer : 해당객체를 (Locale 정보를 참고해서) 문자열로 어떻게 출력할 것인가
+- Parser : 해당객체를 (Locale 정보를 참고해서) 객체로 어떻게 반환할 것인가
